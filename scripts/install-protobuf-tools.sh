@@ -43,3 +43,8 @@ npm install --unsafe-perm -g "grpc@${NODEJS_GRPC_VERSION}" "grpc-tools@${NODEJS_
 # Install the Python gRPC Tools
 pip3 install --user "grpcio==${PYTHON_GRPCIO_VERSION}"
 pip3 install --user "grpcio-tools==${PYTHON_GRPCIO_TOOLS_VERSION}"
+
+# Install the Ruby gRPC Tools
+source /usr/local/rvm/scripts/rvm
+gem install grpc --version "$RUBY_GRPCIO_VERSION"
+gem install grpc-tools --version "$RUBY_GRPCIO_TOOLS_VERSION"

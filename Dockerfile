@@ -10,6 +10,13 @@ RUN --mount=target=/build-scripts,type=bind,source=scripts \
     --mount=target=/var/cache/apt,type=cache \
     /build-scripts/install-packages.sh
 
+# Install Ruby
+RUN --mount=target=/build-scripts,type=bind,source=scripts \
+    --mount=target=/var/lib/apt/lists,type=cache \
+    --mount=target=/var/cache/apt,type=cache \
+    RUBY_VERSION=2.7 \
+    /build-scripts/install-ruby.sh
+
 # Install Go compiler and linter
 RUN --mount=target=/build-scripts,type=bind,source=scripts \
     GOLANG_VERSION=1.14 \
@@ -53,6 +60,8 @@ RUN --mount=target=/build-scripts,type=bind,source=scripts \
     NODEJS_GRPC_TOOLS_VERSION=1.8.1 \
     PYTHON_GRPCIO_VERSION=1.27.2 \
     PYTHON_GRPCIO_TOOLS_VERSION=1.27.2 \
+    RUBY_GRPCIO_VERSION=1.38.0 \
+    RUBY_GRPCIO_TOOLS_VERSION=1.38.0 \
     /build-scripts/install-protobuf-tools.sh
 
 # Install Pulumi build tools
